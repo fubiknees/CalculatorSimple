@@ -34,6 +34,10 @@ document.addEventListener("DOMContentLoaded", function(){
         previousScreen.textContent = currentValue;
         currentScreen.textContent = currentValue;
     })
+
+    equal.addEventListener("click", function(){
+        calculate();
+    })
  })
 
  //outputs number entered
@@ -48,3 +52,25 @@ document.addEventListener("DOMContentLoaded", function(){
     previousValue = currentValue;
     currentValue = '';
  }
+
+ function calculate() {
+    //convert string into Numbers for arithmetic
+    previousValue = Number(previousValue);
+    currentValue = Number(currentValue);
+
+    if (operator  === "+"){
+        previousVaue += currentValue;
+    }
+    else if (operator === "-"){
+        previousValue -= currentValue;
+    }
+    else if (operator === "x"){
+        previousValue *= currentValue;
+    }
+    //does not require parameters since this is last resort
+    else {
+        previousValue /= currentValue;
+    }
+
+    console.log(previousValue)
+ } 
