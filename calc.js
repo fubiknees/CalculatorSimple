@@ -64,9 +64,14 @@ document.addEventListener("DOMContentLoaded", function(){
 
     backspace.addEventListener("click", function(){
         currentScreen.textContent = currentScreen.textContent.toString().slice(0,-1);
-        currentValue = currentScreen.textContent
+        currentValue = currentScreen.textContent;
         console.log("backspace");
     })  
+
+    sign.addEventListener("click", function() {
+        currentScreen.textContent = Number(currentScreen.textContent) * -1;
+        currentValue = currentScreen.textContent;
+    })
  })
 
  //allows adding of individual digits < 8 in length
