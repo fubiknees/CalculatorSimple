@@ -20,6 +20,9 @@ document.addEventListener("DOMContentLoaded", function(){
     let previousScreen = document.querySelector(".previous");
     let currentScreen = document.querySelector(".current"); 
 
+
+        
+
     //function that goes through all "number" divs(name of variable we assigned), AEL on click
     //which allows for it to extract textContent value of all number buttons 
     numbers.forEach((number) =>  number.addEventListener("click", function(event){
@@ -48,6 +51,7 @@ document.addEventListener("DOMContentLoaded", function(){
     //function that creates total in the currentScreen and clears previousScreen
     equal.addEventListener("click", function(){
         if(currentValue != '' && previousValue != ''){
+        previousOperator = operator;    
         operate();
         previousScreen.textContent = ''; //clears top screen 
             if (previousValue.length <= 9){
@@ -65,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function(){
     backspace.addEventListener("click", function(){
         currentScreen.textContent = currentScreen.textContent.toString().slice(0,-1);
         currentValue = currentScreen.textContent;
-        console.log("backspace");
+        // console.log("backspace");
     })  
 
     sign.addEventListener("click", function() {
@@ -83,9 +87,15 @@ document.addEventListener("DOMContentLoaded", function(){
 
 //moves info to previousValue and empties currentValue on trigger
  function outputOp(op){
+    previousOperator = operator; //stores correct operator for use in equation
     operator = op; //updates global variable
-    previousValue = currentValue; //moves currentValue to previousValue 
-    currentValue = ''; //and empties currentValue to allow for input
+    console.log(`${previousOperator} ${operator} ${op} ${currentValue} ${previousValue}`);
+    if(previousValue != "" && currentValue != ""){
+        operate(previousOperator);
+    };
+        previousValue = currentValue; //moves currentValue to previousValue 
+        currentValue = ""; 
+    
  }
 
  function operate() {
@@ -93,13 +103,13 @@ document.addEventListener("DOMContentLoaded", function(){
     previousValue = Number(previousValue);
     currentValue = Number(currentValue);
 
-    if (operator  === "+"){
+    if (previousOperator  === "+"){
         previousValue += currentValue;
-    }
-    else if (operator === "-"){
+    }   
+    else if (previousOperator   === "-"){
         previousValue -= currentValue;
     }
-    else if (operator === "x"){
+    else if (previousOperator  === "x"){
         previousValue *= currentValue;
     }
     //does not require parameters since this is last resort
@@ -107,12 +117,18 @@ document.addEventListener("DOMContentLoaded", function(){
         previousValue /= currentValue;
     }
 
+    // autoSum();
+    // if(Number(previousValue).includes("+","-","x","/")){
+    //     console.log("includes");
+    // } 
 
     ///after arithmetic is done convert back to string for display output
     previousValue = roundNumber(previousValue);
     previousValue = previousValue.toString();
     currentValue = previousValue.toString();
- } 
+
+    
+}
 
  //rounds number 
  function roundNumber (num){
@@ -124,3 +140,6 @@ document.addEventListener("DOMContentLoaded", function(){
         currentValue += '.';
     }
  }
+
+
+
