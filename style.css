@@ -2,8 +2,10 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     width: 100vw;
     height: 100vh;
+    background-color: #273248;
 }
 
 .screen {
@@ -25,6 +27,7 @@ body {
     border: 1px solid black;
     padding: 20px;
     background-color: grey;
+    border-radius: 10px;
 }
 
 .btn {
@@ -35,6 +38,7 @@ body {
     border-radius: 20px;
     margin: 1px;
     transition-duration: .2s;
+    border-color: black;
 }
 
 .btn:hover {
@@ -73,4 +77,15 @@ body {
     font-size: 30px;
     height: 40px;
     margin-right: 10px;
+}
+
+p {
+    display: flex;
+    margin-top: 25px;
+    color: aliceblue;
+    
+}
+
+a {
+    color: lightblue;
 }

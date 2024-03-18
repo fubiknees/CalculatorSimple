@@ -20,8 +20,7 @@ document.addEventListener("DOMContentLoaded", function(){
     let previousScreen = document.querySelector(".previous");
     let currentScreen = document.querySelector(".current"); 
 
-
-        
+    error();
 
     //function that goes through all "number" divs(name of variable we assigned), AEL on click
     //which allows for it to extract textContent value of all number buttons 
@@ -56,10 +55,11 @@ document.addEventListener("DOMContentLoaded", function(){
         previousScreen.textContent = ''; //clears top screen 
             if (previousValue.length <= 9){
                 currentScreen.textContent = previousValue;   
+                previousValue = "";// fixes post equal glitch by clearing old info
             } else {
                 currentScreen.textContent = previousValue.slice(0,9) + "...";
             }
-        }   
+        } 
     })
 
     decimal.addEventListener("click", function(){
@@ -76,6 +76,7 @@ document.addEventListener("DOMContentLoaded", function(){
         currentScreen.textContent = Number(currentScreen.textContent) * -1;
         currentValue = currentScreen.textContent;
     })
+
  })
 
  //allows adding of individual digits < 8 in length
@@ -83,6 +84,10 @@ document.addEventListener("DOMContentLoaded", function(){
     if (currentValue.length <= 8){ //limits length using if statement
         currentValue += num; //adds individual digits
     }
+    if(previousValue != "" && currentValue === "0" && operator != ("+","-","x")){
+        currentValue = "¯|_(ツ)_/¯";
+        console.log(`${operator} ${currentValue} ${previousValue}`);
+    };
  }
 
 //moves info to previousValue and empties currentValue on trigger
@@ -92,11 +97,19 @@ document.addEventListener("DOMContentLoaded", function(){
     console.log(`${previousOperator} ${operator} ${op} ${currentValue} ${previousValue}`);
     if(previousValue != "" && currentValue != ""){
         operate(previousOperator);
+        console.log('1st');
     };
+
+    // if (previousValue === "" && currentValue != ""){
+    //     previousValue = currentValue;
+    //     currentValue.textContent = 0;
+    //     console.log("2nd)");
+    //     operate(operator);
+    // };
         previousValue = currentValue; //moves currentValue to previousValue 
-        currentValue = ""; 
-    
- }
+        currentValue = "";
+        console.log(`${previousOperator} ${operator} ${op} ${currentValue} ${previousValue}`);
+ };
 
  function operate() {
     //convert string input into Numbers for arithmetic
@@ -117,11 +130,6 @@ document.addEventListener("DOMContentLoaded", function(){
         previousValue /= currentValue;
     }
 
-    // autoSum();
-    // if(Number(previousValue).includes("+","-","x","/")){
-    //     console.log("includes");
-    // } 
-
     ///after arithmetic is done convert back to string for display output
     previousValue = roundNumber(previousValue);
     previousValue = previousValue.toString();
@@ -141,5 +149,8 @@ document.addEventListener("DOMContentLoaded", function(){
     }
  }
 
+ function error(){
+   
+ }
 
 
