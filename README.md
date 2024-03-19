@@ -4,7 +4,7 @@
 
 Create an **HTML** Calculator that can perform basic operations (+,-,*,/) via **javascript**. The calculator should accept problems such as 12 + 7 - 5 * 3 = 42. Notice PEMDAS is not being used rather each set of numbers is being evaluated as they are input without the 'equal' sign being pressed. f.e. 19 - 5 * 3 -> 14 * 3 = 42. Extra Credit on this assignment included adding decimal, +/-, and backspace functionality. **CSS** was used for group-like functions.
 
-## Live Preview: 
+## Live Preview: [Here](https://fubiknees.github.io/CalculatorSimple/)
 
 ## Assignment Details: https://www.theodinproject.com/lessons/foundations-calculator#project-solution
 
