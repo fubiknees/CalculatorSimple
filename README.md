@@ -6,7 +6,7 @@ Create an **HTML** Calculator that can perform basic operations (+,-,*,/) via **
 
 ## Live Preview: [Here](https://fubiknees.github.io/CalculatorSimple/)
 
-## Assignment Details: https://www.theodinproject.com/lessons/foundations-calculator#project-solution
+## Assignment Details: [Instructions are subject to change. Completed 3/18/24] (https://www.theodinproject.com/lessons/foundations-calculator#project-solution)
 
 ## Takeaways:
 
